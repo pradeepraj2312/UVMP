@@ -1,13 +1,8 @@
-import React from 'react'
+import React from 'react';
+import AssosiationRegistration from '../components/AssosiationRegistration';
 
 function Register() {
-  return (
-    <div>
-      
-    </div>
-  )
+  return <AssosiationRegistration />;
 }
 
-export default Register
-
-// open for all
+export default Register;

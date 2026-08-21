@@ -1,0 +1,37 @@
+/* Global theme variables for UVMP */
+:root {
+  --uvmp-primary: #800000;
+  --uvmp-primary-dark: #900000;
+  --uvmp-accent: #8B4513;
+  --uvmp-cream: #FBF8F5;
+  --uvmp-warm-gradient-start: #FBF8F5;
+  --uvmp-warm-gradient-end: #F5ECE5;
+  --uvmp-text: #1a1a1a;
+  --uvmp-muted: #6B7280;
+}
+
+html, body, #root {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background-color: #ffffff;
+  color: var(--uvmp-text);
+}
+
+/* Small utility classes to help adopt the theme */
+.btn-primary {
+  background-color: var(--uvmp-primary);
+  color: #fff;
+}
+
+.btn-primary:hover {
+  background-color: var(--uvmp-primary-dark);
+}
+
+.bg-cream {
+  background: linear-gradient(135deg, var(--uvmp-warm-gradient-start) 0%, var(--uvmp-warm-gradient-end) 100%);
+}
