@@ -1401,10 +1401,10 @@ function Landing() {
           <div>
             <div className="footer-col-heading">Platform</div>
             <ul className="footer-link-list">
-              <li className="footer-link-item"><a href="#">How it Works</a></li>
-              <li className="footer-link-item"><a href="#">Volunteer Portal</a></li>
-              <li className="footer-link-item"><a href="#">NGO Directory</a></li>
-              <li className="footer-link-item"><a href="#">Admin Access</a></li>
+              <li className="footer-link-item"><a href="#how-it-works">How it Works</a></li>
+              <li className="footer-link-item"><a href="#volunteer-dashboard">Volunteer Portal</a></li>
+              <li className="footer-link-item"><a href="#ngo-dashboard">NGO Directory</a></li>
+              <li className="footer-link-item"><a href="#admin">Admin Access</a></li>
             </ul>
           </div>
 

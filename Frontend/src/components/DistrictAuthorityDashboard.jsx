@@ -553,60 +553,12 @@ function DistrictAuthorityDashboard() {
           color: #111;
           padding: 8px;
         }
-
         .mobile-overlay {
           display: none;
         }
 
         /* --- RESPONSIVE --- */
         @media (max-width: 860px) {
-          .hamburger-menu-btn {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-          }
-          .mobile-overlay {
-            display: block;
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(0,0,0,0.5);
-            z-index: 9999;
-            opacity: 0;
-            pointer-events: none;
-            transition: opacity 0.3s ease;
-          }
-          .mobile-overlay.open {
-            opacity: 1;
-            pointer-events: auto;
-          }
-          .auth-sidebar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            bottom: 0;
-            z-index: 10000;
-            transform: translateX(-100%);
-            transition: transform 0.3s ease;
-          }
-          .auth-sidebar.mobile-open {
-            transform: translateX(0);
-          }
-          .header-search-bar {
-            display: none;
-          }
-          .auth-main-content {
-            padding: 20px;
-          }
-          .overview-cards-grid {
-            grid-template-columns: 1fr !important;
-          }
-          .custom-table-container {
-            overflow-x: auto;
-            max-width: 100%;
-          }
           .brand-auth-subtitle, .profile-name {
             display: none;
           }
@@ -1021,17 +973,116 @@ function DistrictAuthorityDashboard() {
           )}
 
           {/* TAB: ANALYTICS & SETTINGS (Placeholders for brevity) */}
-          {(activeTab === 'analytics' || activeTab === 'settings') && (
+          {/* TAB: ANALYTICS */}
+          {activeTab === 'analytics' && (
             <div>
               <div className="view-title-bar">
                 <div>
-                  <h1 className="page-title" style={{ textTransform: 'capitalize' }}>{activeTab.replace('-', ' ')}</h1>
-                  <p className="page-subtitle">District-level configurations and data visualization tools.</p>
+                  <h1 className="page-title">District Analytics</h1>
+                  <p className="page-subtitle">Data visualization for incident trends and resource utilization.</p>
                 </div>
               </div>
-              <div className="dash-card-box" style={{ textAlign: 'center', padding: '60px 20px', color: '#64748B' }}>
-                <h2>🏗️ Module Under Construction</h2>
-                <p>This module is currently being configured for the State Data Center.</p>
+              <div className="stats-grid">
+                <div className="premium-stat-card">
+                  <div className="stat-header">
+                    <span className="metric-label">Active Incidents</span>
+                  </div>
+                  <div className="metric-value">12</div>
+                  <div className="metric-trend positive">↓ 4 from yesterday</div>
+                </div>
+                <div className="premium-stat-card">
+                  <div className="stat-header">
+                    <span className="metric-label">Resources Deployed</span>
+                  </div>
+                  <div className="metric-value">85%</div>
+                  <div className="metric-trend negative">Critical capacity</div>
+                </div>
+                <div className="premium-stat-card">
+                  <div className="stat-header">
+                    <span className="metric-label">Volunteers Active</span>
+                  </div>
+                  <div className="metric-value">340</div>
+                  <div className="metric-trend positive">↑ 20 this week</div>
+                </div>
+              </div>
+              <div className="dash-card-box" style={{ marginTop: '24px', padding: '40px 20px', textAlign: 'center', background: '#fff' }}>
+                <h3 style={{ fontSize: '1.1rem', color: '#0F172A', marginBottom: '16px' }}>Incident Reports (Monthly)</h3>
+                <div style={{ height: '200px', display: 'flex', alignItems: 'flex-end', justifyContent: 'center', gap: '20px', borderBottom: '1px solid #e2e8f0', paddingBottom: '16px' }}>
+                  {[30, 50, 40, 80, 60, 90, 70].map((h, i) => (
+                    <div key={i} className="premium-bar" style={{ width: '45px', height: `${h}%` }}></div>
+                  ))}
+                </div>
+                <div style={{ display: 'flex', justifyContent: 'center', gap: '20px', marginTop: '12px', color: '#64748B', fontSize: '0.85rem', fontWeight: '600' }}>
+                  <span style={{width: '45px', textAlign: 'center'}}>Jan</span><span style={{width: '45px', textAlign: 'center'}}>Feb</span><span style={{width: '45px', textAlign: 'center'}}>Mar</span><span style={{width: '45px', textAlign: 'center'}}>Apr</span><span style={{width: '45px', textAlign: 'center'}}>May</span><span style={{width: '45px', textAlign: 'center'}}>Jun</span><span style={{width: '45px', textAlign: 'center'}}>Jul</span>
+                </div>
+              </div>
+            </div>
+          )}
+
+          {/* TAB: SETTINGS */}
+          {activeTab === 'settings' && (
+            <div>
+              <div className="view-title-bar">
+                <div>
+                  <h1 className="page-title">Authority Settings</h1>
+                  <p className="page-subtitle">Configure district-level preferences and automated alerts.</p>
+                </div>
+              </div>
+              <div className="dash-card-box" style={{ padding: '0', display: 'flex', overflow: 'hidden', background: '#fff', borderRadius: '16px', boxShadow: '0 10px 25px -5px rgba(0,0,0,0.05)' }}>
+                {/* Settings Sidebar */}
+                <div style={{ width: '280px', background: '#f8fafc', padding: '32px 24px', borderRight: '1px solid #e2e8f0' }}>
+                  <h3 style={{ fontSize: '1.1rem', fontWeight: '700', color: '#0f172a', marginBottom: '24px' }}>Settings</h3>
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+                    <div style={{ padding: '12px 16px', background: '#fff', borderRadius: '8px', color: '#800000', fontWeight: '600', boxShadow: '0 2px 4px rgba(0,0,0,0.02)', border: '1px solid #e2e8f0', display: 'flex', alignItems: 'center', gap: '10px' }}>
+                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                      District Profile
+                    </div>
+                    <div style={{ padding: '12px 16px', borderRadius: '8px', color: '#64748b', fontWeight: '500', display: 'flex', alignItems: 'center', gap: '10px', cursor: 'pointer' }}>
+                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+                      Security & Auth
+                    </div>
+                    <div style={{ padding: '12px 16px', borderRadius: '8px', color: '#64748b', fontWeight: '500', display: 'flex', alignItems: 'center', gap: '10px', cursor: 'pointer' }}>
+                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.73 21a2 2 0 0 1-3.46 0"></path></svg>
+                      System Alerts
+                    </div>
+                  </div>
+                </div>
+
+                {/* Settings Form */}
+                <div style={{ flex: 1, padding: '40px 48px' }}>
+                  <h2 style={{ fontSize: '1.5rem', fontWeight: '700', color: '#0f172a', marginBottom: '8px' }}>District Authority Information</h2>
+                  <p style={{ color: '#64748b', marginBottom: '32px' }}>Manage district-level preferences and automated incident alerts.</p>
+                  
+                  <div style={{ maxWidth: '600px' }}>
+                    <div style={{ marginBottom: '24px' }}>
+                      <label style={{ display: 'block', fontSize: '0.9rem', fontWeight: '700', color: '#1e293b', marginBottom: '10px' }}>District Name</label>
+                      <input type="text" className="premium-input" defaultValue="Ernakulam" readOnly style={{ background: '#f1f5f9', color: '#64748b', cursor: 'not-allowed', borderColor: '#e2e8f0' }} />
+                    </div>
+                    <div style={{ marginBottom: '24px' }}>
+                      <label style={{ display: 'block', fontSize: '0.9rem', fontWeight: '700', color: '#1e293b', marginBottom: '10px' }}>Nodal Officer Name</label>
+                      <input type="text" className="premium-input" defaultValue="Rajeev Chandran" />
+                    </div>
+                    <div style={{ marginBottom: '24px' }}>
+                      <label style={{ display: 'block', fontSize: '0.9rem', fontWeight: '700', color: '#1e293b', marginBottom: '10px' }}>Emergency Contact Number</label>
+                      <input type="text" className="premium-input" defaultValue="1077" />
+                    </div>
+                    <div style={{ marginBottom: '40px' }}>
+                      <label style={{ display: 'flex', alignItems: 'center', gap: '12px', fontSize: '0.95rem', color: '#334155', fontWeight: '500', cursor: 'pointer', padding: '16px', background: '#f8fafc', borderRadius: '12px', border: '1px solid #e2e8f0' }}>
+                        <input type="checkbox" defaultChecked style={{ width: '22px', height: '22px', accentColor: '#800000' }} /> 
+                        Auto-assign nearest volunteers for Critical incidents
+                      </label>
+                    </div>
+                    
+                    <div style={{ display: 'flex', gap: '16px' }}>
+                      <button className="premium-btn" onClick={() => triggerToast('District settings updated.')}>
+                        Save Configuration
+                      </button>
+                      <button style={{ padding: '14px 32px', borderRadius: '12px', background: '#fff', border: '1px solid #cbd5e1', color: '#475569', fontWeight: '600', cursor: 'pointer' }}>
+                        Cancel
+                      </button>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           )}

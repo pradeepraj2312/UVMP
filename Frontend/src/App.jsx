@@ -7,6 +7,8 @@ import VolunteerRegistration from './components/VolunteerRegistration'
 import ReportingPage from './Pages/ReportingPage'
 import NGO_Dashboard from './components/NGO_Dashboard'
 import DistrictAuthorityDashboard from './components/DistrictAuthorityDashboard'
+import AdminDashboard from './components/AdminDashboard'
+import VolunteerDashboard from './components/VolunteerDashboard'
 
 function App() {
   const [currentPage, setCurrentPage] = useState('landing')
@@ -46,6 +48,16 @@ function App() {
         hash === '#sos'
       ) {
         setCurrentPage('reporting')
+      } else if (
+        hash === '#admin' || 
+        hash === '#admin-dashboard'
+      ) {
+        setCurrentPage('admin')
+      } else if (
+        hash === '#volunteer-dashboard' ||
+        hash === '#volunteer-portal'
+      ) {
+        setCurrentPage('volunteer-dashboard')
       } else {
         setCurrentPage('landing')
       }
@@ -62,6 +74,8 @@ function App() {
   if (currentPage === 'reporting') return <ReportingPage />
   if (currentPage === 'ngo-dashboard') return <NGO_Dashboard />
   if (currentPage === 'district-authority') return <DistrictAuthorityDashboard />
+  if (currentPage === 'admin') return <AdminDashboard />
+  if (currentPage === 'volunteer-dashboard') return <VolunteerDashboard />
   return <Landing />
 }
 
